@@ -7,9 +7,13 @@ from translate import Translator as tl
 import pyttsx3
 print(cv2.__version__)
 
-fps = 10
+fps = 1
 translator = tl(to_lang="pt-BR")
+
 engine = pyttsx3.init()
+engine.setProperty('voice', 'brazil')
+rate = engine.getProperty('rate')
+engine.setProperty('rate', rate-40)
 
 labels_path = os.path.sep.join(['cfg/coco.names'])
 LABELS = open(labels_path).read().strip().split('\n')
@@ -26,12 +30,13 @@ print(f"Camadas de saída: {ln}")
   
 def falar(texto):
   engine.say(texto)
+  print(texto)
   engine.runAndWait()
   engine.stop()
 
 def mostrar(img):
   fig = plt.gcf()
-  fig.set_size_inches(16,10)
+  fig.set_size_inches(8,6)
   plt.axis('off')
   plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
   plt.show()
@@ -41,7 +46,7 @@ def mostrar(img):
 def blob_imagem(net, video, mostrar_texto=True):
   inicio = time.time()
 
-  blob = cv2.dnn.blobFromImage(video, 1 / 255.0, (416, 416), swapRB=True, crop=False)
+  blob = cv2.dnn.blobFromImage(video, 1 / 255.0, (320, 320), swapRB=True, crop=False)
   net.setInput(blob)
   layerOutputs = net.forward(ln)
 
@@ -158,7 +163,7 @@ while(True):
         percentagem_y = (abs(posicao_relativa_y) / (H / 2)) * 100
         # Interpretar a posição relativa
         if posicao_relativa_x < 0:
-            falar("O {} está à esquerda, a {:.0f} da borda esquerda.".format(texto_traduzido, percentagem_x))
+            falar("O {} está à esquerda, a {:.0f}% da borda esquerda.".format(texto_traduzido, percentagem_x))
         elif posicao_relativa_x > 0:
             falar("O {} está à direita, a {:.0f}% da borda direita.".format(texto_traduzido, percentagem_x))
         else:
@@ -169,7 +174,7 @@ while(True):
         elif posicao_relativa_y > 0:
             falar("O {} está abaixo, a {:.0f}% da parte inferior.".format(texto_traduzido, percentagem_y))
         else:
-            falar("O {} está centralizado verticalmente.".format(texto_traduzido))
+            falar("O {}% está centralizado verticalmente.".format(texto_traduzido))
   
 
 
@@ -180,7 +185,7 @@ while(True):
 
       cv2.putText(frame, f"FPS: {cap.get(cv2.CAP_PROP_FPS)}", (20, H-20), fonte, fonte_pequena, (250, 250, 250, 0), lineType=cv2.LINE_AA)
     
-    cv2.imshow("frame", frame)
+    
     
     if cv2.waitKey(1) & 0xFF == ord("q"):
       break
