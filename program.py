@@ -157,24 +157,25 @@ while(True):
         # Calcular a posição relativa
         posicao_relativa_x = centerX - centerImageX
         posicao_relativa_y = centerY - centerImageY
-
+          
         # Calcular a porcentagem em relação à largura e altura da imagem
         percentagem_x = (abs(posicao_relativa_x) / (W / 2)) * 100
         percentagem_y = (abs(posicao_relativa_y) / (H / 2)) * 100
-        # Interpretar a posição relativa
+        
+        #Interpretar a posição relativa
         if posicao_relativa_x < 0:
-            falar("O {} está à esquerda, a {:.0f}% da borda esquerda.".format(texto_traduzido, percentagem_x))
+            falar("Estou vendo {} à esquerda.".format(texto_traduzido))
         elif posicao_relativa_x > 0:
-            falar("O {} está à direita, a {:.0f}% da borda direita.".format(texto_traduzido, percentagem_x))
+            falar("Estou vendo {} à direita.".format(texto_traduzido))
         else:
-            falar("O {} está centralizado horizontalmente.".format(texto_traduzido))
+           falar("Estou vendo {} centralizado.".format(texto_traduzido))
 
-        if posicao_relativa_y < 0:
-            falar("O {} está acima, a {:.0f}% da parte superior.".format(texto_traduzido, percentagem_y))
-        elif posicao_relativa_y > 0:
-            falar("O {} está abaixo, a {:.0f}% da parte inferior.".format(texto_traduzido, percentagem_y))
-        else:
-            falar("O {}% está centralizado verticalmente.".format(texto_traduzido))
+        #if posicao_relativa_y < 0:
+        #    falar("Uma {} está acima".format(texto_traduzido))
+        #elif posicao_relativa_y > 0:
+        #    falar("Uma {} está abaixo".format(texto_traduzido))
+        #else:
+        #    falar("Uma {} está centralizado verticalmente.".format(texto_traduzido))
   
 
 
