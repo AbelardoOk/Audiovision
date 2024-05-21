@@ -1,4 +1,4 @@
-# Porgrama para detectar objetos em imagens em raspberry com uso de Webcam
+# Programa para detectar objetos em imagens em raspberry com uso de Webcam
 
 ## Resumo
 Programa desenvolvido para um projeto de extensão da FundectMS, feito por estudantes do IFMS Campus Aquidauana e orientado pelo professor Ygo Brito e Vinícius Maeda.
