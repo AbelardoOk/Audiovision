@@ -22,11 +22,11 @@ engine.setProperty('voice', 'brazil')
 rate = engine.getProperty('rate')
 engine.setProperty('rate', rate-40)
 
+# Função fala
 def falar(texto):
     engine.say(f"Estou vento {texto}")
     engine.runAndWait()
     engine.stop()
-
 
 # Configuração foto
 comandoFoto = "ffmpeg -f video4linux2 -s 640x480 -ss 4 -i /dev/video0 -frames 1 ./foto.jpg"
