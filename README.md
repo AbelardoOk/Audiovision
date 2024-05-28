@@ -16,7 +16,7 @@ Utilizando uma webcam, o programa irá realizar a detecção a partir do código
 ## Instalação/Preparação do ambiente
 
 #### Importante
-`Para o funcionamento do código, é necessário que seja rodado em uma raspberry com um push button conectado ao pino 17`
+Para o funcionamento do código, é necessário que seja rodado em uma raspberry com um push button conectado ao pino 17
 
 ### Iniciar:
 Após os arquivos serem clonados e instalados corretamente, digite:
