@@ -3,7 +3,6 @@ from ultralytics import YOLO
 import cv2
 import pyttsx3
 import RPi.GPIO as GPIO
-import time
 import numpy as np
 from translate import Translator as tl
 
